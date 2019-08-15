@@ -1,5 +1,6 @@
 require_relative "../config/environment.rb"
 require 'active_support/inflector'
+require 'pry'
 
 class Song
 
@@ -20,7 +21,7 @@ class Song
     column_names.compact
   end
 
-  self.column_names.each {do }|col_name|
+  self.column_names.each {|col_name|
     attr_accessor col_name.to_sym}
 
   def initialize(options={})
@@ -54,7 +55,6 @@ class Song
     sql = "SELECT * FROM #{self.table_name} WHERE name = '#{name}'"
     DB[:conn].execute(sql)
   end
-
 end
 
 
